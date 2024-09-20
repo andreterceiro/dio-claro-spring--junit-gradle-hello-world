@@ -1,10 +1,18 @@
-Creating a basic "Hello World" project with Gradle is straightforward. Here’s a step-by-step guide:
+To create a simple "Hello World" project using Gradle 4.4.1, follow these steps:
 
 ### Step 1: Install Gradle
-Make sure you have Gradle installed. You can download it from the [official website](https://gradle.org/install/).
 
-### Step 2: Create Project Directory
-Open a terminal and create a new directory for your project:
+Make sure you have Gradle installed. You can check this by running:
+
+```bash
+gradle -v
+```
+
+If you don't have Gradle installed, you can download it from the [Gradle website](https://gradle.org/releases/).
+
+### Step 2: Create a New Project Directory
+
+Create a new directory for your project:
 
 ```bash
 mkdir HelloWorld
@@ -12,87 +20,73 @@ cd HelloWorld
 ```
 
 ### Step 3: Initialize the Gradle Project
-Run the following command to generate a basic Gradle project structure:
+
+Run the following command to create a basic Gradle project structure:
 
 ```bash
-gradle init
+gradle init --type basic
 ```
 
-You’ll be prompted to select the type of project. Choose "application" and then follow the prompts to set the project details (like language, build type, etc.).
+This will create a few files and directories, including `build.gradle`.
 
-### Step 4: Modify the Project Structure
-After initialization, you should have a structure like this:
+### Step 4: Edit `build.gradle`
 
-```
-HelloWorld
-├── build.gradle
-├── gradle
-│   └── wrapper
-│       ├── gradle-wrapper.jar
-│       └── gradle-wrapper.properties
-├── settings.gradle
-└── src
-    └── main
-        └── java
-            └── <your-package>
-                └── App.java
-```
-
-### Step 5: Edit `App.java`
-Navigate to `src/main/java/<your-package>/` and open `App.java`. Replace the contents with the following code:
-
-```java
-package <your-package>;
-
-public class App {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-```
-
-Make sure to replace `<your-package>` with your chosen package name (e.g., `com.example.helloworld`).
-
-### Step 6: Configure `build.gradle`
-Open `build.gradle` and ensure it looks something like this:
+Open the `build.gradle` file and modify it to include the application plugin and specify the main class. Here’s an example:
 
 ```groovy
 plugins {
     id 'application'
 }
 
-application {
-    mainClass = '<your-package>.App'
-}
+mainClassName = 'HelloWorld'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    // Add your dependencies here
+    // You can add dependencies here if needed
 }
 ```
 
-### Step 7: Build and Run the Project
+### Step 5: Create Source Directory and HelloWorld Class
+
+Create the necessary directories and the HelloWorld class:
+
+```bash
+mkdir -p src/main/java
+```
+
+Now create a file named `HelloWorld.java` in `src/main/java`:
+
+```java
+// src/main/java/HelloWorld.java
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+```
+
+### Step 6: Build and Run the Project
+
 To build the project, run:
 
 ```bash
 gradle build
 ```
 
-To run your application, use:
+To run the application, use:
 
 ```bash
 gradle run
 ```
 
-### Step 8: Output
-You should see the output:
+### Step 7: Verify Output
 
-```
-Hello, World!
-```
+You should see `Hello, World!` printed in the console.
 
 ### Summary
-You now have a basic "Hello World" project set up with Gradle! You can expand this project by adding more classes or dependencies as needed.
+
+You now have a simple "Hello World" Gradle project using version 4.4.1. You can expand upon this structure to add more features or dependencies as needed! If you have any more questions or need further assistance, feel free to ask!
